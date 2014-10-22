@@ -59,6 +59,7 @@ class listener implements EventSubscriberInterface
 	{
 		return array(
 			'core.user_setup'	=> 'load_language_on_setup',
+			'core.page_header'	=> 'board_rules',			
 		);
 	}
 
@@ -80,7 +81,9 @@ class listener implements EventSubscriberInterface
 	*/
 	public function board_rules($event)
 	{
-
+		$this->template->assign_vars(array(
+			'U_RULES'			=> append_sid("{$this->phpbb_root_path}rules"),			
+		));
 	}
 
 }
