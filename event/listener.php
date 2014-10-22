@@ -28,26 +28,24 @@ class listener implements EventSubscriberInterface
 
 	/** @var \phpbb\db\driver\driver_interface */
 	protected $db;
-	protected $controller_helper;
+
 	/** @var string */
 	protected $phpbb_root_path;
 	protected $php_ext;
-	protected $phpbb_dispatcher;
+
 	/**
 	* Constructor
 	*/
 
-	public function __construct(\phpbb\auth\auth $auth, \phpbb\config\config $config, \phpbb\user $user, \phpbb\db\driver\driver_interface $db, \phpbb\template\template $template, \phpbb\controller\helper $controller_helper, $phpbb_root_path, $php_ext, \phpbb\event\dispatcher_interface $phpbb_dispatcher)
+	public function __construct(\phpbb\auth\auth $auth, \phpbb\config\config $config, \phpbb\user $user, \phpbb\db\driver\driver_interface $db, \phpbb\template\template $template,  $phpbb_root_path, $php_ext)
 	{
 		$this->auth = $auth;
 		$this->config = $config;
 		$this->user = $user;
 		$this->db = $db;
 		$this->template = $template;
-		$this->controller_helper = $controller_helper;
 		$this->phpbb_root_path = $phpbb_root_path;
-		$this->php_ext = $php_ext;
-		$this->phpbb_dispatcher = $phpbb_dispatcher;		
+		$this->php_ext = $php_ext;	
 	}
 
 	/**
@@ -60,11 +58,10 @@ class listener implements EventSubscriberInterface
 	static public function getSubscribedEvents()
 	{
 		return array(
-			'core.user_setup'	=> 'load_language_on_setup',		
-			'core.page_header'	=>	'board_rules',
+			'core.user_setup'	=> 'load_language_on_setup',
 		);
 	}
-	
+
 	public function load_language_on_setup($event)
 	{
 		$lang_set_ext = $event['lang_set_ext'];
@@ -84,15 +81,6 @@ class listener implements EventSubscriberInterface
 	public function board_rules($event)
 	{
 
-	//	$this->user->add_lang_ext('hammer663/BoardRules', 'board_rules');
-//		$this->template->assign_vars(array(
-//			'U_RULES'				=> append_sid("{$this->phpbb_root_path}rules/"),
-
-//			'U_BOARDRULES' => $this->controller_helper->route('hammer663_BoardRules_rules'),
-//		));
-
-
-
 	}
-//////////////
+
 }

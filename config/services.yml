@@ -6,11 +6,9 @@ services:
             - @config
             - @user
             - @dbal.conn
-            - @template	
-            - @controller.helper			
+            - @template				
             - %core.root_path%
             - %core.php_ext%
-            - @dispatcher
         tags:
             - { name: event.listener }
     hammer663.BoardRules.controller:
@@ -20,8 +18,6 @@ services:
             - @config
             - @dbal.conn
             - @template
-            - @controller.helper
             - @user
             - %core.root_path%
             - %core.php_ext%
-            - @request

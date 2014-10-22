@@ -12,42 +12,27 @@ namespace hammer663\BoardRules\controller;
 use Symfony\Component\HttpFoundation\Response;
 
 	
-class rules implements main_rules
+class rules
 {
-	public function __construct(\phpbb\auth\auth $auth, \phpbb\config\config $config, \phpbb\db\driver\driver_interface $db, \phpbb\template\template $template, \phpbb\controller\helper $controller_helper, \phpbb\user $user, $phpbb_root_path, $php_ext, \phpbb\request\request_interface $request)
+	public function __construct(\phpbb\auth\auth $auth, \phpbb\config\config $config, \phpbb\db\driver\driver_interface $db, \phpbb\template\template $template, \phpbb\user $user, $phpbb_root_path, $php_ext)
 	{
 		$this->config = $config;
 		$this->db = $db;
 		$this->auth = $auth;
-		$this->template = $template;
-		$this->controller_helper = $controller_helper;		
+		$this->template = $template;	
 		$this->user = $user;
 		$this->phpbb_root_path = $phpbb_root_path;
 		$this->php_ext = $php_ext;
-
-		$this->request = $request;
-
 	}
 
 	public function main()
 	{
-		$this->user->add_lang(array('memberlist', 'groups', 'search'));
-		
+
 		// Load the appropriate faq file		
 		$this->user->add_lang_ext('hammer663/BoardRules', 'board_rules');
 		
 		$page_title = $this->user->lang['BOARD_RULES'];
 		$template_html = 'rules_body.html';
-				
-
-
-
-
-		
-		
-		
-		
-		////////////////		
 
 		$cat_count = 0;
 		$rule_count = 0;
@@ -62,7 +47,7 @@ class rules implements main_rules
 			{
 				$cat_count++;
 				$rule_count = 0;
-				
+
 				$this->template->assign_block_vars('cat_row', array(
 					'CAT_TEXT'			=> $help_ary[1],
 					'CAT_NUMBER'		=> $cat_count,
@@ -70,7 +55,7 @@ class rules implements main_rules
 
 				continue;
 			}
-			
+
 			elseif (strpos($help_ary[0], '~~') === 0) // It's subsubrule
 			{
 				$subsubrule_count++;
@@ -79,7 +64,7 @@ class rules implements main_rules
 					'SUBSUBRULE_TEXT'		=> $help_ary[1],
 					'SUBSUBRULE_NUMBER'		=> $cat_count . '.' . $rule_count . '.' . $subrule_count . '.' . $subsubrule_count,
 				));
-				
+
 				continue;
 			}
 
@@ -115,7 +100,6 @@ class rules implements main_rules
 			'CAT_COUNT_HALF'		=> ($cat_count > 6) ? round($cat_count / 2 + 1) : 0,
 		));
 
-
 		// Output the page
 		$this->template->assign_vars(array(
 			'U_RULES'			=> append_sid("{$this->phpbb_root_path}rules"),			
@@ -130,14 +114,5 @@ class rules implements main_rules
 		page_footer();
 		return new Response($this->template->return_display('body'), 200);
 
-
-
-
-
-			
-		
-//////////////		
-		
-		
 	}
 }
