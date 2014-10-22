@@ -24,7 +24,6 @@ class v_0_0_1 extends \phpbb\db\migration\migration
 	public function update_data()
 	{
 		return array(
-			
 			// Current version
 			array('config.add', array('br_version', '0.0.1')),
 		);

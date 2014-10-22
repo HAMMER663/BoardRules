@@ -37,7 +37,7 @@ class listener implements EventSubscriberInterface
 	* Constructor
 	*/
 
-	public function __construct(\phpbb\auth\auth $auth, \phpbb\config\config $config, \phpbb\user $user, \phpbb\db\driver\driver_interface $db, \phpbb\template\template $template,  $phpbb_root_path, $php_ext)
+	public function __construct(\phpbb\auth\auth $auth, \phpbb\config\config $config, \phpbb\user $user, \phpbb\db\driver\driver_interface $db, \phpbb\template\template $template, $phpbb_root_path, $php_ext)
 	{
 		$this->auth = $auth;
 		$this->config = $config;
@@ -45,7 +45,7 @@ class listener implements EventSubscriberInterface
 		$this->db = $db;
 		$this->template = $template;
 		$this->phpbb_root_path = $phpbb_root_path;
-		$this->php_ext = $php_ext;	
+		$this->php_ext = $php_ext;
 	}
 
 	/**
@@ -59,7 +59,7 @@ class listener implements EventSubscriberInterface
 	{
 		return array(
 			'core.user_setup'	=> 'load_language_on_setup',
-			'core.page_header'	=> 'board_rules',			
+			'core.page_header'	=> 'board_rules',
 		);
 	}
 
@@ -72,7 +72,7 @@ class listener implements EventSubscriberInterface
 		);
 		$event['lang_set_ext'] = $lang_set_ext;
 	}
-	
+
 	/**
 	* Board Rules
 	*
@@ -82,7 +82,7 @@ class listener implements EventSubscriberInterface
 	public function board_rules($event)
 	{
 		$this->template->assign_vars(array(
-			'U_RULES'			=> append_sid("{$this->phpbb_root_path}rules"),			
+			'U_RULES'			=> append_sid("{$this->phpbb_root_path}rules"),
 		));
 	}
 
