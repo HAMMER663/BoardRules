@@ -1,0 +1,126 @@
+<!-- INCLUDE overall_header.html -->
+
+<script type="text/javascript">
+// <![CDATA[
+/* Fragment Highlight version 0.1 */
+
+//*** This JavaScript highlight code is copyright 2003 by David Dorward; http://dorward.me.uk
+//*** Modified by Nekstati @ 2009
+
+var fragHLed = '';
+
+/* Highlight link target if the visitor arrives at the page with a # */
+
+function fragHLload() {
+	fragHL(location.hash.substring(1));
+}
+
+/* Highlight link target from an onclick event after unhighlighting the old one */
+
+function fragHL(frag) {
+	if (fragHLed.length > 0 && document.getElementById(fragHLed)) {
+	document.getElementById(fragHLed).className = '';
+	}
+	if (frag.length > 0 && document.getElementById(frag)) {
+	fragHLed = frag;
+	document.getElementById(frag).className = 'fragment';
+	}
+}
+
+/* Add onclick events to all <a> with hrefs that include a "#" */
+
+function fragHLlink() {
+	if (document.getElementsByTagName) {
+	var an = document.getElementById('rules').getElementsByTagName('a');
+	for (i=0; i<an.length; i++) {
+		if (an.item(i).getAttribute('href').indexOf('#') >= 0) {
+		var fragment = an.item(i).getAttribute('href').substring(an.item(i).getAttribute('href').indexOf('#') + 1);
+			var evn = "fragHL('" + fragment + "')";
+			var fun = new Function('e', evn);
+			an.item(i).onclick = fun;
+		}
+	}
+	}
+}
+
+/* Init the script */
+
+window.onload = function() {
+	fragHLload();
+	fragHLlink();
+};
+// ]]>
+</script>
+
+<a name="faqtop"></a>
+
+<div id="rules">
+<div id="pagecontent">
+
+	<table class="tablebg" width="100%" cellspacing="1">
+	<tr>
+		<th>{L_BOARD_RULES_HDR}</th>
+	</tr>
+	<tr>
+		<td class="row1" style="line-height: 1.8em; padding: 8px">
+			<table width="100%">
+			<tr valign="top">
+				<td>
+				<!-- BEGIN cat_row -->
+					<!-- IF cat_row.CAT_NUMBER == CAT_COUNT_HALF -->
+					</td>
+					<td>
+					<!-- ENDIF -->
+				<span class="gen"><a class="postlink" href="#cat{cat_row.CAT_NUMBER}">{cat_row.CAT_NUMBER}. {cat_row.CAT_TEXT}</a></span><br />
+				<!-- END cat_row -->
+				</td>
+			</tr>
+			</table>
+		</td>
+	</tr>
+	</table>
+
+	<br clear="all" />
+
+	<!-- BEGIN cat_row -->
+		<table class="tablebg" width="100%" cellspacing="1">
+		<tr> 
+			<td class="cat" align="center"><h4 id="cat{cat_row.CAT_NUMBER}" style="padding: 7px">{cat_row.CAT_NUMBER}. {cat_row.CAT_TEXT}</h4></td>
+		</tr>
+		<!-- BEGIN rule_row --> 
+		<tr>
+			<!-- IF cat_row.rule_row.S_ROW_COUNT is even -->
+				<td valign="top" style="background-color: #ECECEC; padding: 0">
+			<!-- ELSE -->
+				<td valign="top" style="background-color: #DCE1E5; padding: 0">
+			<!-- ENDIF -->
+				<div class="postbody">
+				<div id="rule{cat_row.rule_row.RULE_NUMBER}" style="padding: 8px"><a href="#rule{cat_row.rule_row.RULE_NUMBER}">{cat_row.rule_row.RULE_NUMBER}</a>. {cat_row.rule_row.RULE_TEXT}
+				<!-- BEGIN subrule_row -->
+						<div id="rule{cat_row.rule_row.subrule_row.SUBRULE_NUMBER}" style="margin: 0.5em 0 0 30px"><a href="#rule{cat_row.rule_row.subrule_row.SUBRULE_NUMBER}">{cat_row.rule_row.subrule_row.SUBRULE_NUMBER}</a>. {cat_row.rule_row.subrule_row.SUBRULE_TEXT}		
+						<!-- BEGIN subsubrule_row -->
+							<div id="rule{cat_row.rule_row.subrule_row.subsubrule_row.SUBSUBRULE_NUMBER}" style="margin: 0.7em 0 0 30px"><a href="#rule{cat_row.rule_row.subrule_row.subsubrule_row.SUBSUBRULE_NUMBER}">{cat_row.rule_row.subrule_row.subsubrule_row.SUBSUBRULE_NUMBER}</a>. {cat_row.rule_row.subrule_row.subsubrule_row.SUBSUBRULE_TEXT}
+							</div>
+						<!-- END subsubrule_row -->
+						</div>
+				<!-- END subrule_row -->
+				</div>
+				</div>
+			</td>
+		</tr>
+		<!-- END rule_row -->
+		</table>
+
+		<br clear="all" />
+	<!-- END cat_row -->
+
+</div>
+</div>
+
+<!-- INCLUDE breadcrumbs.html -->
+
+<br clear="all" />
+
+<div align="{S_CONTENT_FLOW_END}"><!-- INCLUDE jumpbox.html --></div>
+
+<!-- INCLUDE overall_footer.html -->

@@ -1,0 +1,3 @@
+hammer663_BoardRules_main_controller:
+    pattern: /rules
+    defaults: { _controller: hammer663.BoardRules.controller:main }

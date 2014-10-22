@@ -1,0 +1,27 @@
+services:
+    hammer663.BoardRules.listener:
+        class: hammer663\BoardRules\event\listener
+        arguments:
+            - @auth
+            - @config
+            - @user
+            - @dbal.conn
+            - @template	
+            - @controller.helper			
+            - %core.root_path%
+            - %core.php_ext%
+            - @dispatcher
+        tags:
+            - { name: event.listener }
+    hammer663.BoardRules.controller:
+        class: hammer663\BoardRules\controller\rules
+        arguments:
+            - @auth
+            - @config
+            - @dbal.conn
+            - @template
+            - @controller.helper
+            - @user
+            - %core.root_path%
+            - %core.php_ext%
+            - @request

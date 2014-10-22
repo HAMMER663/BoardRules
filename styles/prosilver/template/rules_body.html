@@ -1,0 +1,58 @@
+<!-- INCLUDE overall_header.html -->
+
+<div id="rules" style="width: 100%">
+
+<div id="boardrules-categories">
+	<div class="mini-panel">
+		<div class="inner">
+			<h3>{L_BOARD_RULES_CATS}</h3>
+			<ul class="menu">
+				<!-- BEGIN cat_row -->
+					<li><a href="#cat{cat_row.CAT_NUMBER}">{cat_row.CAT_NUMBER}. {cat_row.CAT_TEXT}</a></li>
+				<!-- END cat_row -->
+			</ul>
+		</div>
+	</div>
+</div>
+
+
+<div id="container">
+<!-- BEGIN cat_row -->
+	<h2 class="boardrules-header">{L_BOARD_RULES_HDR}</h2>
+	<div id="main" class="content">
+
+		<div class="content">
+			<h2 id="cat{cat_row.CAT_NUMBER}"><strong>{cat_row.CAT_NUMBER}. {cat_row.CAT_TEXT}</strong></h2>
+			<!-- BEGIN rule_row -->
+				<dl class="faq">
+					<dd id="rule{cat_row.rule_row.RULE_NUMBER}"><a href="#rule{cat_row.rule_row.RULE_NUMBER}">{cat_row.rule_row.RULE_NUMBER}</a>. {cat_row.rule_row.RULE_TEXT}
+					<!-- BEGIN subrule_row -->
+						<dl class="faq1">
+							<dd id="rule{cat_row.rule_row.subrule_row.SUBRULE_NUMBER}"><a href="#rule{cat_row.rule_row.subrule_row.SUBRULE_NUMBER}">{cat_row.rule_row.subrule_row.SUBRULE_NUMBER}</a>. {cat_row.rule_row.subrule_row.SUBRULE_TEXT}
+							<!-- BEGIN subsubrule_row -->
+								<dl class="faq1">
+									<dd id="rule{cat_row.rule_row.subrule_row.subsubrule_row.SUBSUBRULE_NUMBER}"><a href="#rule{cat_row.rule_row.subrule_row.subsubrule_row.SUBSUBRULE_NUMBER}">{cat_row.rule_row.subrule_row.subsubrule_row.SUBSUBRULE_NUMBER}</a>. {cat_row.rule_row.subrule_row.subsubrule_row.SUBSUBRULE_TEXT}
+									</dd>
+								</dl>
+							<!-- END subsubrule_row -->
+							</dd>
+						</dl>
+					<!-- END subrule_row -->
+					</dd>
+				</dl>
+				<!-- IF not cat_row.rule_row.S_LAST_ROW --><span class="hr"></span><!-- ENDIF -->
+			<!-- END rule_row -->
+		</div><br />
+
+
+	</div>
+<!-- END cat_row -->
+</div>
+
+</div>
+
+
+
+
+<!-- INCLUDE jumpbox.html -->
+<!-- INCLUDE overall_footer.html -->
