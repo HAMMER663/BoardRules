@@ -54,7 +54,7 @@ class rules
 
 				continue;
 			}
-			elseif (strpos($help_ary[0], '~~') === 0) // It's subsubrule
+			else if (strpos($help_ary[0], '~~') === 0) // It's subsubrule
 			{
 				$subsubrule_count++;
 
@@ -65,7 +65,7 @@ class rules
 
 				continue;
 			}
-			elseif (strpos($help_ary[0], '~') === 0) // It's subrule
+			else if (strpos($help_ary[0], '~') === 0) // It's subrule
 			{
 				$subrule_count++;
 				$subsubrule_count = 0;
