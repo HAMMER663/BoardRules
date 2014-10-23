@@ -68,7 +68,7 @@ class listener implements EventSubscriberInterface
 		$lang_set_ext = $event['lang_set_ext'];
 		$lang_set_ext[] = array(
 			'ext_name' => 'hammer663/BoardRules',
-			'lang_set' => 'board_rules',
+			'lang_set' => 'help_rules',
 		);
 		$event['lang_set_ext'] = $lang_set_ext;
 	}

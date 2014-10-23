@@ -28,7 +28,7 @@ class rules
 	{
 
 		// Load the appropriate faq file
-		$this->user->add_lang_ext('hammer663/BoardRules', 'board_rules');
+		$this->user->add_lang_ext('hammer663/BoardRules', 'help_rules');
 
 		$page_title = $this->user->lang['BOARD_RULES'];
 		$template_html = 'rules_body.html';
