@@ -14,16 +14,6 @@ if (!defined('IN_PHPBB'))
 	exit;
 }
 
-if (empty($lang) || !is_array($lang))
-{
-	$lang = array();
-}
-$lang = array_merge($lang, array(
-	'BOARD_RULES'			=> 'Rules',
-	'BOARD_RULES_CATS'		=> 'Sections',
-	'BOARD_RULES_HDR'		=> 'Board rules',
-));
-
 $help = array(
 	array(
 		0 => '--',
