@@ -98,6 +98,7 @@ class rules
 		// Output the page
 		$this->template->assign_vars(array(
 			'U_RULES'			=> append_sid("{$this->phpbb_root_path}rules"),
+			'S_BOARD_RULES'		=> true,
 		));
 
 		page_header($page_title);
