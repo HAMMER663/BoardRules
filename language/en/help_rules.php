@@ -72,3 +72,5 @@ $help = array(
 		1 => 'Text of the second rule.'
 	),
 );
+
+?>

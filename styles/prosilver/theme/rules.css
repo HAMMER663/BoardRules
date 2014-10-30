@@ -32,14 +32,14 @@
 	margin-top: 1em;
 }
 
-#rules .fragment {
+#rules .br_fragment {
 	background-color: #ECD5D8;
 	color: #9C2A4D;
 	margin: -2px;
 	padding: 5px;
 }
 
-#rules .fragment a {
+#rules .br_fragment a {
 	color: #9C2A4D;
 }
 
